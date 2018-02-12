@@ -1,0 +1,41 @@
+<html>
+  <head> 
+    <title>Urban Power model - Axeltorv</title>
+   <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB6orwqoSbOt8jTwURcC7rWnNqJlGq4wtI",
+      authDomain: "urbanpowervr.firebaseapp.com",
+      databaseURL: "https://urbanpowervr.firebaseio.com",
+      projectId: "urbanpowervr",
+      storageBucket: "",
+      messagingSenderId: "570322090931"
+    };
+    firebase.initializeApp(config);
+  </script>
+  </head>
+  <body>
+    <a-scene>
+        <a-assets>
+                <img id="snow" crossorigin="anonymous" src="./snow.jpg">
+        </a-assets>
+        <a-asset-item id="axeltorv" src="20180131_axeltorv.gltf"></a-asset-item>
+
+       <a-entity gltf-model="#axeltorv" scale="1 1 1" rotation="-90 -133 174" position="-2.11 -102 -1.32"></a-entity>
+       
+       <a-sky id="image-360" radius="100" src="#snow"></a-sky>
+
+       <a-entity id="cameraRig">
+      		<a-entity id="head" camera wasd-controls look-controls></a-entity>
+     		<a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
+      		<a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" gearvr-controls></a-entity>
+      </a-entity>
+ 
+      <a-sky color="#599"></a-sky>    
+    
+   </a-scene>
+ 
+  </body>
+</html>
